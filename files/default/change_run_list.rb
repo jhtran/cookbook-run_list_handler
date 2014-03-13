@@ -14,6 +14,7 @@ class ChangeRunList < ::Chef::Handler
             node.run_list.reset! node['run_list_handler']['post_boot_runlist']
             node.save
           end
+          ::Mixlib::ShellOut.new('/usr/local/bin/chef-client').run_command
         end
       end
     end
